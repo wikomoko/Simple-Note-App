@@ -1,0 +1,120 @@
+<!--
+    Author:@wiko.moko (Widi Yatmoko is real name)
+    Date    : 25 March 2021 (first build)
+    Revition:25 March 2021 
+    Region : Indonesia , South East Asia
+
+    Term and Condition:  
+    This Software was built by @wiko.moko, but everyone is allowed to use, modifiy, or reshare is.
+    This Software also fully Open Source, it is ok to grab it for being your own and deleting the athor name.
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Note WebApp</title>
+    <style>
+        *{
+            font-family: sans-serif;
+        }
+        .card{
+            width: 280px;
+            margin: auto;
+           border-radius: 5px;
+            border-color: #828282;
+            border-style: solid;
+            border-width: 1px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        .note{
+           text-align: left;
+           
+        }
+        hr{
+            border-color: #828282;
+            border-width: 1px;
+        }
+        .deleteNoteButton{
+            height: 30px;
+            width: 80px;
+            background-color: #FA82AA;
+            border-style: solid;
+            border-color: #828282;
+            border-radius: 3px;
+            color: black;
+            font-weight: bold;
+        }
+        .buttonPad{
+            text-align: center;
+        }
+        .addNoteButton{
+            width: 250px;
+            padding: 10px;
+            border-radius: 5px;
+            border-width: 1px;
+            background-color: #45A3FF;
+            color: white;
+            font-size: 20px;
+            border-color: #828282;
+        }
+        .a1{
+            background-color: #FFE89D;
+        }
+        .a2{
+            background-color: #B9C8FF;
+        }
+        .a3{
+            background-color: #C0F5C3;
+        }
+    </style>
+</head>
+<body>
+        <div class="items" id="items">
+           
+        </div>
+        <br>
+        <div class="buttonPad">
+            <button class="addNoteButton" onclick="createNote()">Create New Note</button>
+        </div>
+       
+        <script>
+            let number=0;
+
+            function createNote(){
+                let note=prompt("Type your note here.....");
+                let card=document.createElement("div");
+
+                if(number%4==1){
+                    card.setAttribute("class","card a3");
+                     card.setAttribute("id","card a"+number);
+                }else if(number%4==2){
+                     card.setAttribute("id","card a"+number);
+                     card.setAttribute("class","card a2");
+                }else{
+                     card.setAttribute("id","card a"+number);
+                     card.setAttribute("class","card a1");
+               }
+              
+               if(note==null ||note=="" || note==" "){
+                   alert("!!! You can not type the empty note !!!");
+                   alert("Please fill the note first")
+               }else{
+                    card.innerHTML="<p class='note'>"+note+"</p> <hr> <button class='deleteNoteButton' onclick='deleteNote("+number+")'>Delete</button>";
+                    let pad=document.getElementById("items");
+                    pad.appendChild(card);
+                    number++;
+               }
+            }
+
+            function deleteNote(option){
+                let zx=document.getElementById("card a"+option).style.display="none";
+            }
+        </script>
+</body>
+</html>
